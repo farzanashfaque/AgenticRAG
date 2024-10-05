@@ -1,6 +1,15 @@
-import requests
+"""
+Module for converting text to speech using the Sarvam AI Text-to-Speech API.
+
+This module provides a function, `text_to_speech`, that takes a text input 
+and converts it into speech using the Sarvam AI's text-to-speech API. The 
+audio output is saved as a WAV file named 'output.wav' in the working 
+directory. The function handles various exceptions related to HTTP requests 
+and audio processing, logging errors for debugging purposes.
+"""
 import base64
 import logging
+import requests
 from requests.exceptions import (
     HTTPError,
     Timeout,

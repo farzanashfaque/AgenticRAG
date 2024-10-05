@@ -8,6 +8,9 @@ from langchain.tools import Tool
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.prebuilt import create_react_agent
 from langchain_openai import ChatOpenAI
+from langchain_core.tools import Tool
+from langchain_experimental.utilities import PythonREPL
+from langchain_community.tools import DuckDuckGoSearchRun
 from requests.exceptions import Timeout, ConnectionError, HTTPError
 from agenticrag.config import OPENAI_API_KEY
 
@@ -54,17 +57,22 @@ def call_rag_system(question: str) -> str:
 
 def create_agent():
     """
-    Creates and returns a React agent that uses the RAG system for 
-    answering questions.
+    Creates and returns a React agent that utilizes various tools,
+    including a Retrieval-Augmented Generation (RAG) system,
+    a Python REPL for executing commands, and a DuckDuckGo search
+    tool for retrieving internet-based information.
 
-    This function defines a tool that interfaces with the RAG system, 
-    initializes a language model using the OpenAI API, and sets up a 
-    memory saver for the agent. The agent can use the RAG system to 
-    answer questions based on retrieved context.
+    This function defines tools that interface with the RAG system,
+    executes Python commands, and performs web searches. It initializes
+    a language model using the OpenAI API and sets up a memory saver
+    for the agent. The agent can answer questions based on retrieved
+    context, execute Python commands, and find current information
+    from the internet.
 
     Returns:
-        Agent: A React agent configured with the RAG system tool and 
-        language model for processing queries.
+        Agent: A React agent configured with the RAG system tool,
+        Python REPL, DuckDuckGo search tool, and language model for
+        processing queries.
     """
     # Define a Tool for the RAG system
     rag_tool = Tool.from_function(
@@ -73,9 +81,26 @@ def create_agent():
         description="Searches and returns excerpts from the NCERT physics "
                     "chapter on sound."
     )
+    python_repl = PythonREPL()
+    repl_tool = Tool(
+        name="python_repl",
+        func=python_repl.run,
+        description="A Python shell. Use this to execute python commands."
+                    "Input should be a valid python command. If you want"
+                    "to see the output of a value, you should print it out"
+                    "with `print(...)`."
+    )
+    search = DuckDuckGoSearchRun()
+    duckduckgo_tool = Tool(
+        name='DuckDuckGoSearch',
+        func=search.run,
+        description="Useful for when you need to do a search on the internet"
+                    "to find latest events or information that another tool"
+                    "can't find. be specific with your input."
+    )
 
     # List of tools for the agent (RAG system and general LLM)
-    tools = [rag_tool]
+    tools = [rag_tool, repl_tool, duckduckgo_tool]
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     memory = MemorySaver()
 

@@ -13,6 +13,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SARVAMAI_API_KEY = os.getenv("SARVAMAI_API_KEY")
 PERSIST_DIRECTORY = "./chroma_db4"
 COLLECTION_NAME = "NCERT_CHAPTER_13_SOUND"
+RAG_TOPIC = "Sound"
 
 # Define the system prompt for RAG
 RAG_SYSTEM_PROMPT = (

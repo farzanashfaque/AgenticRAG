@@ -4,6 +4,58 @@ This is a Retrieval-Augmented Generation (RAG) based application that allows you
 
 ## Setup Instructions
 
+To run this RAG application, you need to install the following dependencies:
+
+### Required Dependencies
+
+1. **Poppler**
+   - Poppler is a PDF rendering library that is used for PDF parsing.
+   - **Installation Instructions:**
+     - **On Ubuntu:**
+       ```bash
+       sudo apt-get install poppler-utils
+       ```
+     - **On macOS (using Homebrew):**
+       ```bash
+       brew install poppler
+       ```
+     - **On Windows:**
+       1. Download the Poppler binaries from [this link](https://github.com/oschwartz10612/poppler-windows/releases/tag/v24.07.0-0).
+       2. Extract the downloaded ZIP file to a directory (e.g., `C:\poppler`).
+       3. Add the `bin` folder (e.g., `C:\poppler\poppler-<version>\bin`) to your system's PATH:
+          - Right-click on `This PC` or `Computer` and select `Properties`.
+          - Click on `Advanced system settings`.
+          - Click on the `Environment Variables` button.
+          - In the `System variables` section, find the `Path` variable and select it, then click `Edit`.
+          - Click `New` and add the path to the `bin` folder.
+          - Click `OK` to save and close all dialog boxes.
+
+2. **Tesseract OCR**
+   - Tesseract is an optical character recognition engine used for text extraction from images.
+   - **Installation Instructions:**
+     - **On Ubuntu:**
+       ```bash
+       sudo apt-get install tesseract-ocr
+       ```
+     - **On macOS (using Homebrew):**
+       ```bash
+       brew install tesseract
+       ```
+     - **On Windows:**
+       1. Download the Tesseract installer from [this link](https://github.com/UB-Mannheim/tesseract/wiki).
+       2. Run the installer and follow the prompts to complete the installation.
+       3. Ensure that the installation directory (e.g., `C:\Program Files\Tesseract-OCR`) is added to your system's PATH using the same steps as for Poppler.
+
+### Path Configuration
+
+Make sure that both Poppler and Tesseract are added to your system's PATH variable. This can usually be done by adding the installation paths to your shell configuration file (like `.bashrc` or `.zshrc` for Linux/macOS).
+
+After installation, verify that both tools are accessible from the command line by running:
+```bash
+pdftotext -v  # for Poppler
+tesseract --version  # for Tesseract
+```
+
 ### Environment Variables
 
 Before you get started, create a `.env` file in your directory with the following content:

@@ -6,7 +6,7 @@ import requests
 from requests.exceptions import Timeout
 from agenticrag.retrieval_chain import create_qa_chain
 from agenticrag.agent import create_agent
-from agenticrag.config import RAG_SYSTEM_PROMPT
+from agenticrag.config import RAG_SYSTEM_PROMPT, RAG_TOPIC
 from agenticrag.sarvam import text_to_speech
 
 # Initialize the QA Chain
@@ -26,7 +26,11 @@ app = FastAPI()
 @cl.on_chat_start
 async def start_chat():
     """Send a welcome message when the chat starts."""
-    await cl.Message("Welcome to the RAG Agent! Ask me anything about sound.").send()
+    welcome_message = (
+        f"Welcome to the RAG Agent! Ask me anything about {RAG_TOPIC} "
+        "or current affairs.\nI can also execute python code!"
+    )
+    await cl.Message(welcome_message).send()
 
 
 @cl.on_message

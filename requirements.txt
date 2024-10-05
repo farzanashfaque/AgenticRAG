@@ -9,4 +9,6 @@ langchain
 langchain-community
 langchain-openai
 langchain-chroma
+langchain-experimental
+duckduckgo-search
 chainlit

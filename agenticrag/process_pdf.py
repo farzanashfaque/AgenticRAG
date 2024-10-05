@@ -47,7 +47,7 @@ def partition_text(elements):
     """
     partitions = {}
     current_header = None
-    
+   
     for element in elements:
         if is_section_header(element):
             current_header = element.text
@@ -73,17 +73,17 @@ def chunk_documents(partitions):
     """
     # Initialize text splitter
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500, 
+        chunk_size=500,
         chunk_overlap=50
     )
-   
+
     # Chunk the texts from the dictionary and store with section headers
     # as metadata
     chunked_documents = []
-   
+
     for section, text in partitions.items():
         chunks = text_splitter.create_documents([text])
-     
+
         # Add chunk number to metadata
         for chunk_num, chunk in enumerate(chunks):
             chunked_documents.append({
@@ -93,7 +93,7 @@ def chunk_documents(partitions):
                     "chunk_num": chunk_num + 1  # Make chunk numbers 1-indexed
                 }
             })
-  
+ 
     return chunked_documents
 
 

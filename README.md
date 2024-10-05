@@ -1,6 +1,6 @@
 # AgenticRAG App
 
-This is a Retrieval-Augmented Generation (RAG) based application that allows you to parse a PDF file, generate embeddings, and utilize them in an interactive application powered by FastAPI and Chainlit. The application implements a smart Agent that decides based on the user query whether its necessary to call the retrieval endpoint.
+This is a Retrieval-Augmented Generation (RAG) based application that allows you to parse a PDF file, generate embeddings, and utilize them in an interactive application powered by FastAPI and Chainlit. The application implements a smart Agent that decides whether it's necessary to call the retrieval endpoint based on the user query. The agent can also do web searches and run Python code.
 
 ## Setup Instructions
 

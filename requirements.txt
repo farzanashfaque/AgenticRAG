@@ -1,0 +1,12 @@
+pdfminer.six
+pi_heif
+unstructured==0.15.12
+unstructured_inference==0.7.36
+unstructured_pytesseract
+python-dotenv
+langgraph
+langchain
+langchain-community
+langchain-openai
+langchain-chroma
+chainlit

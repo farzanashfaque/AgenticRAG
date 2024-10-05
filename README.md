@@ -7,10 +7,10 @@ This is a Retrieval-Augmented Generation (RAG) based application that allows you
 ### Environment Variables
 
 Before you get started, create a `.env` file in your directory with the following content:
-`
-OPENAI_API_KEY=<your_openai_api_key> 
+```
+OPENAI_API_KEY=<your_openai_api_key>
 SARVAMAI_API_KEY=<your_sarvamai_api_key>
-`
+```
 
 Replace `<your_openai_api_key>` and `<your_sarvamai_api_key>` with your actual API keys.
 
@@ -26,9 +26,9 @@ cd <repository_name>
 ### Configuration
 In the repository, you'll find a configuration file that contains some parameters you can customize:
 
-PERSIST_DIRECTORY: This parameter defines the location to persist the vector database.
-COLLECTION_NAME: This parameter specifies the name of the collection created to store the PDF embeddings.
-System Prompt: The system prompt for the RAG application.
+PERSIST_DIRECTORY - This parameter defines the location to persist the vector database.  
+COLLECTION_NAME - This parameter specifies the name of the collection created to store the PDF embeddings.  
+RAG_SYSTEM_PROPMPT: The system prompt for the RAG application.
 Feel free to adjust these settings according to your requirements.
 
 ### Installation
@@ -40,11 +40,11 @@ pip install .
 ## Usage
 The package has two entry points defined:
 
-1. Onboard PDF: This command parses the PDF, generates embeddings, and stores them in the Chroma vector database. You can run it in your terminal as follows:
+**1. Onboard PDF**: This command parses the PDF, generates embeddings, and stores them in the Chroma vector database. You can run it in your terminal as follows:
 ```bash
 onboard_pdf "path/to/pdf"
 ```
-2. Start RAG App: After onboarding your PDF, start the FastAPI and Chainlit servers by running:
+**2. Start RAG App**: After onboarding your PDF, start the FastAPI and Chainlit servers by running:
 ```bash
 start_rag_app
 ```
@@ -53,6 +53,4 @@ Once the servers are up and running, you can access the Chainlit server at:
 ```arduino
 http://localhost:8501/
 ```
-
-
 

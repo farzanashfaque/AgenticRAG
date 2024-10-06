@@ -81,10 +81,11 @@ In the repository, you'll find a configuration file that contains some parameter
 PERSIST_DIRECTORY - This parameter defines the location to persist the vector database.  
 COLLECTION_NAME - This parameter specifies the name of the collection created to store the PDF embeddings.  
 RAG_SYSTEM_PROPMPT: The system prompt for the RAG application.
+RAG_TOPIC: The topic being described in the pdf. This parameter will be used to update the startup message on the UI.
 Feel free to adjust these settings according to your requirements.
 
 ### Installation
-Once you have your configuration set up, install the package by running:
+Once you have your configuration set up, navigate to the root directory of the cloned repo and install the package by running:
 ```bash
 pip install .
 ```
